@@ -40,6 +40,75 @@ in those moments of the day when the solar radiation is missing.
 <figcaption>Fig.2 - Basic operation of a TES.</figcaption><br><br><br>
 
 ## Governing equations
+The equations governing the temparature exchange between the fluid and the solid are:
+
+$` ε ρ_f C_{p,f} {∂T_f\over ∂t} + ε ρ_f C_{p,f} u_{f,i} {∂T_f\over ∂x} = k_f {∂^2T_f\over ∂x^2} + h_f ( T_s - T_f ) `$
+
+$` (1 - ε) ρ_s C_s {∂T_s\over ∂t} = k_s {∂^2T_s\over ∂x^2} - h_v ( T_s - T_f ) `$
+
+where:
+
+$` ε `$ : porosity
+
+$` ρ_f `$ : fluid density
+
+$` ρ_s `$ : solid density
+
+$` C_{p,f} `$ : fluid specific heat at constant pressure
+
+$` C_s `$ : solid specific heat
+
+$` k_f `$ : fluid thermal conductivity
+
+$` k_s `$ : solid thermal conductivity
+
+$` h_f `$ : fluid heat transfer
+
+$` h_v `$ : volumetric heat-transfer
+
+The numerical method adopted for the discretization of the governing equation is
+the Finite Volume Method (FVM). The FVM is based on two basic ideas:
+1. Solving the integral form of the governing equation
+2. Evaluating fluxes through the cell averages by using “reconstruction”
+
+## Order Verification Study
+The purpose of the Order Verification Study consists of analysing and evaluating
+the spatial discretization of the approximate equations (only the spatial discretization).
+This analysis is extremely important, precise and it also offers the possibility of finding
+programming mistakes. By testing the implementation through the Order Verification
+Study, we can determine if the spatially discretized equations are consistent or not: a
+model achieves consistency when it approaches to the exact solution as the grid spacing
+is reduced, while it is called inconsistent when this does not happen.
+According to the definition of consistency, the implementation of the equation is tested
+by reducing the grid spacing and monitoring if the results approaches to the exact
+solution. This is called Grid-Refinement Study. The only problem is that we do not
+know the exact solution of the mathematical model, for this reason we need a method that allows
+to assess the consistency of the semi-discretized model and at the same time to check if
+its actual order of accuracy is equal to the nominal order of accuracy. This can be achieved by 
+using the Method of Manufactured Solution (MMS). The idea behind the MMS is really simple and can be
+explained in 5 points:
+1. Choice of the form of the manufactured solution
+2. Generation of the analytical source term that is obtained by applying the
+governing equation to the manufactured solution
+3. Resolution of the discretized governing equation with the analytical
+result got at point 2 acting as source term, by reducing the grid spacing
+4. Evaluation of the errors between the exact manufactured solution and the
+discretized manufactured solution
+5. Determination of the order of accuracy
+
+## Storage Design Study
+The Storage Design Study consists of finding the optimal dimensions (diameter and height) given 
+the volume, in other words, the dimensions which maximise the exergy efficiency and the capacity
+factor. The exergy efficiency is defined as:
+
+$` \frac{Ex_{d,out} - Ex_{d,in}}{Ex_{c,in} - Ex_{c,out}} `$
+
+where the symbol ̇$` Ex `$ is the exergy flux (the subscripts $` c, d `$ indicate the charging and the
+discharging phase respectively and $` in, out `$ indicate the inlet and the outlet), defined as:
+
+$` ∫ mx_f C_{p,f} [T - T_0 - T_0   ln(\frac{T_0}{T})] dt  `$
+
+where $` mx_f `$ is the mass flow rate.
 
 ## Structure of the code
 The code is composed of three main parts:
