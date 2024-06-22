@@ -132,8 +132,8 @@ $` \frac{Ex_{d,out} - Ex_{d,in}}{Ex_{c,in} - Ex_{c,out}} `$
 </p>
 
 <p align="justify">
-where the symbol ̇$` Ex `$ is the exergy flux (the subscripts $` c, d `$ indicate the charging and the
-discharging phase respectively and $` in, out `$ indicate the inlet and the outlet), defined as:
+where the symbol ̇<b>Ex</b> is the exergy flux (the subscripts <b>c, d</b> indicate the charging and the
+discharging phase respectively and <b>in, out</b> indicate the inlet and the outlet), defined as:
 </p>
 
 <p align="center">
@@ -141,7 +141,7 @@ $` ∫ mx_f C_{p,f} [T - T_0 - T_0   ln(\frac{T_0}{T})] dt  `$
 </p>
 
 <p align="justify">
-where $` mx_f `$ is the mass flow rate.
+where <b>mx_f</b> is the mass flow rate.
 </p>
 
 ## Structure of the code
@@ -165,33 +165,33 @@ describe how to generate the different simulations:
 #### The Order Verification Study
 <p align="justify">
 In order to carry on the Order Verification Study it is necessary to call the
-function **Order_Verification_Study()** inside the main of the code, by
+function <b>Order_Verification_Study()</b> inside the main of the code, by
 commenting the other functions. If the user wants to run the OVS for different
 values of the paramaters, he should change these last ones in the function
-**input_OVS()**, leaving the variables **flag=1** and **DOS=0** unchanged, since they
+<b>input_OVS()</b>, leaving the variables <b>flag=1</b> and <b>DOS=0</b> unchanged, since they
 are essential to implement just the OVS. If in the OVS, the user wants to
-decouple the fluid and solid equations, he should impose the variables **hv_f** and
-**hv_s** equal to zero in **input_OVS()**.
+decouple the fluid and solid equations, he should impose the variables <b>hv_f</b> and
+<b>hv_s</b> equal to zero in <b>input_OVS()</b>.
 </p>
 
 #### Exact solution
 <p align="justify">
 To carry on the comparison with the exact solution, it is
-necessary to call the function **Simulation()** inside the main of the code, by
-commenting the other functions. If the user wants to run **Simulation()** for
+necessary to call the function <b>Simulation()</b> inside the main of the code, by
+commenting the other functions. If the user wants to run <b>Simulation()</b> for
 different values of the paramaters, he should change these last ones in the
-function **input_Simulation()**, leaving the variables **flag=0** and **DOS=0**
+function <b>input_Simulation()</b>, leaving the variables <b>flag=0</b> and <b>DOS=0</b>
 unchanged, since they are necessary to implement just the Exact solution.
 </p>
 
 #### Storage Design Study
 <p align="justify">
 To carry on the Storage Design Study, it is necessary to
-call the function **Storage_Design_Study()** inside the main of the code, by
+call the function <b>Storage_Design_Study()</b> inside the main of the code, by
 commenting the other functions. If the user wants to run
-**Storage_Design_Study()** for different values of the paramaters, he should
-change these last ones in the function **input_Storage_Design_Study()**,
-leaving the variables **flag=0** and **DOS=1** unchanged, since they are necessary
+<b>Storage_Design_Study()</b> for different values of the paramaters, he should
+change these last ones in the function <b>input_Storage_Design_Study()</b>,
+leaving the variables <b>flag=0</b> and <b>DOS=1</b> unchanged, since they are necessary
 to implement just the Storage Design Study.
 </p>
 
@@ -202,17 +202,17 @@ The graphs can be plotted using the different Matlab scripts:
 
 #### Exact_solution
 <p align="justify">
-This Matlab script can be used to draw the thermocline of the charging phase in order to compare it with the exact solution. The graph contains the plot of the exact solution and another one obtained from a simulation with n_cells=50. Before running this script, it is necessary that the user has run **Simulation()**.
+This Matlab script can be used to draw the thermocline of the charging phase in order to compare it with the exact solution. The graph contains the plot of the exact solution and another one obtained from a simulation with n_cells=50. Before running this script, it is necessary that the user has run <b>Simulation()</b>.
 </p>
 
 #### Fluid_GRS – Solid_GRS
 <p align="justify">
-This two Matlab scripts are used to carry on the Grid Refinement Study for the solid and the fluid. They plot the graphs of the Error and of the actual order of accuracy as functions of the grid spacing. Furthermore, a graph shows how the manufactured solution approximate the exact solution. Before running these scripts, it is necessary that the user has run **Order_Verification_Study()**.
+This two Matlab scripts are used to carry on the Grid Refinement Study for the solid and the fluid. They plot the graphs of the Error and of the actual order of accuracy as functions of the grid spacing. Furthermore, a graph shows how the manufactured solution approximate the exact solution. Before running these scripts, it is necessary that the user has run <b>Order_Verification_Study()</b>.
 </p>
 
 #### Storage_Design_Study
 <p align="justify">
-This Matlab script allows to draw Exergy Efficiency, the Capacity Factor and the Temperature increase from the Storage Design Study. Before running this script, it is necessary that the user has run **Storage_Design_Study**.
+This Matlab script allows to draw Exergy Efficiency, the Capacity Factor and the Temperature increase from the Storage Design Study. Before running this script, it is necessary that the user has run <b>Storage_Design_Study</b>.
 </p>
 
 #### Temperature_evolution
